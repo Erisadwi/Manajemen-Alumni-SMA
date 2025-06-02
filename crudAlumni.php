@@ -70,7 +70,7 @@ $result = mysqli_query($koneksi, $query);
     <input type="text" name="searchNama" placeholder="Cari Nama Depan" value="<?php echo htmlspecialchars($searchNama); ?>">
     <input type="number" name="searchTahun" placeholder="Tahun Lulus" value="<?php echo htmlspecialchars($searchTahun); ?>">
     <button type="submit">Cari</button>
-    <a href="index.php" class="button" style="background-color:#ccc; color:#333; margin-left:10px;">Reset</a>
+    <a href="crudAlumni.php" class="button" style="background-color:#ccc; color:#333; margin-left:10px;">Reset</a>
   </form>
 </div>
   
