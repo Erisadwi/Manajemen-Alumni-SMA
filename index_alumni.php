@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>User- Halaman Utama</title>
+  <title>Alumni- Halaman Utama</title>
   <link rel="stylesheet" href="navbar.css" />
   <link rel="stylesheet" href="style.css" />
 
@@ -17,6 +17,7 @@
           <li><a href="dataAlumni.php">Data Alumni</a></li>
           <li><a href="halaman_statistik_alumni.php">Statistik</a></li>
           <li><a href="halaman_kontak_alumni.php">Kontak</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
     </nav>

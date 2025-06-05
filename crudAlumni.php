@@ -56,6 +56,7 @@ $result = mysqli_query($koneksi, $query);
           <li><a href="dataAlumni.php">Data Alumni</a></li>
           <li><a href="halaman_statistik_admin.php">Statistik</a></li>
           <li><a href="halaman_kontak_admin.php">Kontak</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
     </nav>

@@ -33,6 +33,7 @@ $koneksi->close();
             <li><a href="dataAlumni.php">Data Alumni</a></li>
             <li><a href="halaman_statistik_alumni.php">Statistik</a></li>
             <li><a href="halaman_kontak_alumni.php">Kontak</a></li>
+            <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>
 </div>
