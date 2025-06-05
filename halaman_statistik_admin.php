@@ -39,8 +39,10 @@ $koneksi->close();
 </div>
 
 <div class="content">
-    <h2>Statistik Alumni per Tahun</h2>
-    <p class="deskripsi">Grafik berikut menunjukkan jumlah alumni dari tahun ke tahun berdasarkan data terkini dari sistem.</p>
+    <h2 style="text-align: center;">Statistik Alumni per Tahun</h2>
+    <p class="deskripsi" style="text-align: center;">
+        Grafik berikut menunjukkan jumlah alumni dari tahun ke tahun berdasarkan data terkini.
+    </p>
 
     <div class="chart-container">
         <canvas id="alumniChart"></canvas>
