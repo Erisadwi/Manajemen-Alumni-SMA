@@ -71,6 +71,13 @@
 </div>
 
 <div class="contact-container">
+    
+    <?php
+    if (isset($_GET['status']) && $_GET['status'] === 'sukses') {
+        echo '<p style="color: green; font-weight: bold; margin-bottom: 15px;">Testimoni berhasil terkirim!</p>';
+    }
+    ?>
+
     <form class="contact-form" action="proses_testimoni.php" method="post">
     <h3>Bagikan Testimoni Anda</h3>
     <input type="text" name="nama_depan" placeholder="Nama Depan" required>
