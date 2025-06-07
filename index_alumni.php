@@ -198,12 +198,11 @@
 
   </div>
 </section>
-
-    <footer class="footer">
-      <p>&copy; 2025 SMA Contoh. All rights reserved.</p>
-    </footer>
-
   </div> 
+
+      <footer class="footer">
+      <p>&copy; 2025 SMA 99 All rights reserved.</p>
+      </footer>
 
   <script>
     const slides = document.querySelectorAll('.carousel-slide');

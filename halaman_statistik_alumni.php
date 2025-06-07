@@ -50,7 +50,7 @@ $koneksi->close();
 </div>
 
 <div class="footer show">
-    &copy; 2025 SMA Contoh. All rights reserved.
+    &copy; 2025 SMA 99 All rights reserved.
 </div>
 
 <script>
