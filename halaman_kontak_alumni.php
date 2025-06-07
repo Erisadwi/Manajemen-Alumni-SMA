@@ -20,6 +20,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 <div class="testimonials-section">
     <h2 class="testimonial-title">TESTIMONIALS</h2>
     <p class="testimonial-subtitle">Pengalaman para alumni SMA 99 Surabaya</p>
@@ -66,6 +67,32 @@
                 <p>"Guru-gurunya luar biasa, dan saya tidak akan pernah melupakan masa SMA ini."</p>
                 <span>— Daniel, Alumni 2020</span>
             </div>
+=======
+<div class="content">
+    <h2>Testimoni Alumni</h2>
+    <p class="deskripsi">Silakan kirim testimoni melalui form berikut ini</p>
+
+    <div class="contact-container">
+        <form class="contact-form" action="proses_testimoni.php" method="post">
+            <input type="text" name="nama_depan" placeholder="Nama Depan" required>
+            <select name="tahunLulus" required>
+                <option value="" disabled selected>Tahun Lulus</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+            </select>
+            <textarea name="testimoni" placeholder="Testimoni" required></textarea>
+            <button type="submit">Kirim</button>
+        </form>
+
+        <div class="contact-info">
+            <h4>Informasi Kontak</h4>
+            <p>Alamat: Jl. Pendidikan No.123, Kota Surabaya</p>
+            <p>Email: info@sma99sby.sch.id</p>
+            <p>Telepon: (021) 1234567</p>
+>>>>>>> 0db9f16cae2fb043737ad95e813dc6251d721761
         </div>
     </div>
 </div>
