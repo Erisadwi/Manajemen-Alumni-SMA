@@ -21,14 +21,21 @@
 </div>
 
 <div class="content">
-    <h2>Hubungi Kami</h2>
-    <p class="deskripsi">Silakan hubungi kami melalui form berikut atau melalui informasi kontak di bawah.</p>
+    <h2>Testimoni Alumni</h2>
+    <p class="deskripsi">Silakan kirim testimoni melalui form berikut ini</p>
 
     <div class="contact-container">
-        <form class="contact-form" action="proses_kontak.php" method="post">
-            <input type="text" name="nama" placeholder="Nama Anda" required>
-            <input type="email" name="email" placeholder="Email Anda" required>
-            <textarea name="pesan" placeholder="Pesan Anda" required></textarea>
+        <form class="contact-form" action="proses_testimoni.php" method="post">
+            <input type="text" name="nama_depan" placeholder="Nama Depan" required>
+            <select name="tahunLulus" required>
+                <option value="" disabled selected>Tahun Lulus</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+            </select>
+            <textarea name="testimoni" placeholder="Testimoni" required></textarea>
             <button type="submit">Kirim</button>
         </form>
 
