@@ -1,14 +1,12 @@
 <?php
 include('koneksi.php');
 
-$searchNama = isset($_GET['searchNama']) ? $_GET['searchNama'] : '';
-$searchTahun = isset($_GET['searchTahun']) ? $_GET['searchTahun'] : '';
+$searchNama   = isset($_GET['searchNama']) ? $_GET['searchNama'] : '';
+$searchTahun  = isset($_GET['searchTahun']) ? $_GET['searchTahun'] : '';
 $searchStatus = isset($_GET['searchStatus']) ? $_GET['searchStatus'] : '';
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 15;
-if ($limit < 1) $limit = 15;
+$page         = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-$showAll = isset($_GET['show']) && $_GET['show'] == 'all';
+$limit  = isset($_GET['limit']) ? (int)$_GET['limit'] : 15;
 $offset = ($page - 1) * $limit;
 
 $where = [];
@@ -20,7 +18,6 @@ if ($searchTahun !== '') {
     $searchTahun = mysqli_real_escape_string($koneksi, $searchTahun);
     $where[] = "tahunLulus = '$searchTahun'";
 }
-
 $searchStatus = isset($_GET['searchStatus']) ? $_GET['searchStatus'] : '';
 if ($searchStatus !== '') {
     $searchStatus = mysqli_real_escape_string($koneksi, $searchStatus);
@@ -29,14 +26,14 @@ if ($searchStatus !== '') {
 
 $where_sql = count($where) > 0 ? "WHERE " . implode(" AND ", $where) : "";
 
-$count_query = "SELECT COUNT(*) AS total FROM alumni $where_sql";
+$count_query  = "SELECT COUNT(*) AS total FROM alumni $where_sql";
 $count_result = mysqli_query($koneksi, $count_query);
-$count_row = mysqli_fetch_assoc($count_result);
-$total_data = $count_row['total'];
-$total_pages = ceil($total_data / $limit);
+$count_row    = mysqli_fetch_assoc($count_result);
+$total_data   = $count_row['total'];
+$total_pages  = ($limit > 0) ? ceil($total_data / $limit) : 1;
 
 $query = "SELECT * FROM alumni $where_sql ORDER BY idAlumni ASC";
-if (!$showAll) {
+if ($limit > 0) {
     $query .= " LIMIT $limit OFFSET $offset";
 }
 $result = mysqli_query($koneksi, $query);
@@ -48,7 +45,6 @@ $result = mysqli_query($koneksi, $query);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Manajemen Data Alumni SMA</title>
-  <link rel="stylesheet" href="navbar.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -74,14 +70,12 @@ $result = mysqli_query($koneksi, $query);
 
   <div>
     <form method="GET" class="search-form" style="display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: nowrap; margin-bottom: 10px;">
-    <select name="limit" onchange="this.form.submit()" style="padding: 6px; font-size: 14px; width: 100px;">
-    <?php
-    for ($i = 15; $i <= 105; $i += 15) {
-        $selected = ($limit == $i) ? 'selected' : '';
-        echo "<option value=\"$i\" $selected>$i</option>";
-    }
-    ?>
-    </select> 
+      <select name="limit" onchange="this.form.submit()" style="padding: 6px; font-size: 14px; width: 150px;">
+        <option value="0" <?= $limit == 0 ? 'selected' : '' ?>>Tampilkan Semua</option>
+      <?php for ($i = 15; $i <= 105; $i += 15): ?>
+        <option value="<?= $i ?>" <?= $limit == $i ? 'selected' : '' ?>><?= $i ?> per halaman</option>
+      <?php endfor; ?>
+      </select> 
       
   <select name="searchStatus" onchange="this.form.submit()" style="padding: 6px; font-size: 14px; width: 150px;">
     <option value="" <?php echo ($searchStatus === '') ? 'selected' : ''; ?>>Semua Status</option>
@@ -143,15 +137,7 @@ $result = mysqli_query($koneksi, $query);
     </tbody>
   </table>
 
-  <div style="text-align:center; margin-bottom: 20px;">
-    <?php if (!$showAll): ?>
-      <a href="?show=all&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>&searchStatus=<?php echo urlencode($searchStatus); ?>&limit=<?php echo $limit; ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Semua</a>
-    <?php else: ?>
-      <a href="dataAlumni.php?searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>&searchStatus=<?php echo urlencode($searchStatus); ?>&limit=<?php echo $limit; ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Per Halaman</a>
-    <?php endif; ?>
-  </div>
-
-  <?php if (!$showAll && $total_pages > 1): ?>
+  <?php if ($limit > 0 && $total_pages > 1): ?>
   <div class="pagination" style="text-align:center; margin-top: 20px;">
     <?php for($i = 1; $i <= $total_pages; $i++): ?>
       <?php if ($i == $page): ?>

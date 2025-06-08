@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin - Halaman Utama</title>
-  <link rel="stylesheet" href="navbar.css" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -109,7 +108,7 @@
 
 <section id="sambutan" class="description-container">
   <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
-    <!-- Paragraf Sambutan -->
+    
     <div style="flex: 2; min-width: 250px;">
       <p>Assalamu'alaikum warahmatullahi wabarakatuh,</p>
       <p>
@@ -124,7 +123,7 @@
       </p>
       <p>
          Kami percaya bahwa sekolah bukan hanya tempat belajar, tapi juga tempat tumbuh dan berkembangnya bakat serta potensi siswa. Dengan dukungan guru-guru profesional, staf yang berdedikasi, serta kerja sama yang erat dengan orang tua dan masyarakat, kami optimis dapat menciptakan lulusan yang unggul dalam intelektual, emosional, dan spiritual.
-  </p>
+      </p>
       </p>
       <p>
         Wassalamu’alaikum warahmatullahi wabarakatuh.
@@ -148,49 +147,41 @@
 
   <div style="margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
     
-    <!-- Fasilitas 1 -->
     <div style="flex: 1; min-width: 220px; max-width: 260px; background-color: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center;">
       <i class="fas fa-book-reader fa-2x" style="color: #2E7D32; margin-bottom: 15px;"></i>
       <h3>Perpustakaan</h3>
     </div>
 
-    <!-- Fasilitas 2 -->
     <div style="flex: 1; min-width: 220px; max-width: 260px; background-color: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center;">
       <i class="fas fa-flask fa-2x" style="color: #2E7D32; margin-bottom: 15px;"></i>
       <h3>Laboratorium Lengkap</h3>
     </div>
 
-    <!-- Fasilitas 3 -->
     <div style="flex: 1; min-width: 220px; max-width: 260px; background-color: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center;">
       <i class="fas fa-tv fa-2x" style="color: #2E7D32; margin-bottom: 15px;"></i>
       <h3>Ruang Belajar Multimedia</h3>
     </div>
 
-    <!-- Fasilitas 4 -->
     <div style="flex: 1; min-width: 220px; max-width: 260px; background-color: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center;">
       <i class="fas fa-check-circle fa-2x" style="color: #2E7D32; margin-bottom: 15px;"></i>
       <h3>Ruang Kelas</h3>
     </div>
 
-    <!-- Fasilitas 5 -->
     <div style="flex: 1; min-width: 220px; max-width: 260px; background-color: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center;">
       <i class="fas fa-book-open fa-2x" style="color: #2E7D32; margin-bottom: 15px;"></i>
       <h3>Pojok Baca</h3>
     </div>
 
-    <!-- Fasilitas 6 -->
     <div style="flex: 1; min-width: 220px; max-width: 260px; background-color: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center;">
       <i class="fas fa-store fa-2x" style="color: #2E7D32; margin-bottom: 15px;"></i>
       <h3>Koperasi</h3>
     </div>
 
-    <!-- Fasilitas 7 -->
     <div style="flex: 1; min-width: 220px; max-width: 260px; background-color: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center;">
       <i class="fas fa-volleyball-ball fa-2x" style="color: #2E7D32; margin-bottom: 15px;"></i>
       <h3>Lapangan Voli & Basket</h3>
     </div>
 
-    <!-- Fasilitas 8 -->
     <div style="flex: 1; min-width: 220px; max-width: 260px; background-color: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center;">
       <i class="fas fa-building fa-2x" style="color: #2E7D32; margin-bottom: 15px;"></i>
       <h3>Ruang Serbaguna</h3>
