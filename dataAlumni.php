@@ -43,7 +43,6 @@ $result = mysqli_query($koneksi, $query);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Manajemen Data Alumni SMA</title>
-  <link rel="stylesheet" href="navbar.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -64,20 +63,22 @@ $result = mysqli_query($koneksi, $query);
 
 <center><h1>Data Alumni SMA 99 Surabaya</h1></center>
 
-<form method="GET" class="search-form" style="text-align: center; margin-bottom: 10px;">
-  <input type="text" name="searchNama" placeholder="Cari Nama Depan" value="<?php echo htmlspecialchars($searchNama); ?>">
-  <input type="number" name="searchTahun" placeholder="Tahun Lulus" value="<?php echo htmlspecialchars($searchTahun); ?>">
-  <select name="limit" onchange="this.form.submit()">
+<form method="GET" class="search-form" style="display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: nowrap; margin-bottom: 10px;">
+  <select name="limit" onchange="this.form.submit()" style="padding: 6px; font-size: 14px;">
     <?php
     for ($i = 15; $i <= 105; $i += 15) {
         $selected = ($limit == $i) ? 'selected' : '';
         echo "<option value=\"$i\" $selected>$i</option>";
     }
     ?>
-  </select>
-  <button type="submit">Cari</button>
-  <a href="dataAlumni.php" class="button" style="background-color:#ccc; color:#333; margin-left:10px;">Reset</a>
+  </select>  
+  <input type="text" name="searchNama" placeholder="Cari Nama Depan" value="<?php echo htmlspecialchars($searchNama); ?>" style="padding: 6px; font-size: 14px; width: 150px;">
+  <input type="number" name="searchTahun" placeholder="Tahun Lulus" value="<?php echo htmlspecialchars($searchTahun); ?>" style="padding: 6px; font-size: 14px; width: 120px;">
+  
+  <button type="submit" style="padding: 6px 12px; font-size: 14px;">Cari</button>
+  <button type="button" class="button" onclick="window.location.href='dataAlumni.php'">Reset</button>
 </form>
+
 
 <table border="1" cellpadding="8" cellspacing="0" style="margin: auto; width: 95%;">
   <thead>
