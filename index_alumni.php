@@ -11,7 +11,7 @@
   <div class="wrapper">
     <nav class="navbar">
       <div class="navbar-container">
-        <div class="logo">Dashboard Admin</div>
+        <div class="logo">Dashboard Alumni</div>
         <ul class="nav-links">
           <li><a href="index_alumni.php">Home</a></li>
           <li><a href="dataAlumni.php">Data Alumni</a></li>
