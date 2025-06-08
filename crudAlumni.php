@@ -85,16 +85,16 @@ $result = mysqli_query($koneksi, $query);
   <table>
     <thead>
       <tr>
-        <th>Id</th>
-        <th>Nama Lengkap</th>
-        <th>Alamat</th>
-        <th>No Telepon</th>
-        <th>Jurusan</th>
-        <th>Tahun Lulus</th>
-        <th>Status</th>
-        <th>Institusi</th>
-        <th>Foto</th>
-        <th class="action-column">Action</th>
+      <th style="text-align: center;">Id</th>
+      <th style="text-align: center;">Nama Lengkap</th>
+      <th style="text-align: center;">Alamat</th>
+      <th style="text-align: center;">No Telepon</th>
+      <th style="text-align: center;">Jurusan</th>
+      <th style="text-align: center;">Tahun Lulus</th>
+      <th style="text-align: center;">Status</th>
+      <th style="text-align: center;">Institusi</th>
+      <th style="text-align: center;">Foto</th>
+      <th class="action-column">Action</th>
       </tr>
     </thead>
     <tbody>
