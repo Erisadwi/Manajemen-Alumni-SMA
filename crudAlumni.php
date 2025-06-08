@@ -3,6 +3,7 @@ include('koneksi.php');
 
 $searchNama = isset($_GET['searchNama']) ? $_GET['searchNama'] : '';
 $searchTahun = isset($_GET['searchTahun']) ? $_GET['searchTahun'] : '';
+$searchStatus = isset($_GET['searchStatus']) ? $_GET['searchStatus'] : '';
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 15;
 if ($limit < 1) $limit = 15;
@@ -18,6 +19,12 @@ if ($searchNama !== '') {
 if ($searchTahun !== '') {
     $searchTahun = mysqli_real_escape_string($koneksi, $searchTahun);
     $where[] = "tahunLulus = '$searchTahun'";
+}
+
+$searchStatus = isset($_GET['searchStatus']) ? $_GET['searchStatus'] : '';
+if ($searchStatus !== '') {
+    $searchStatus = mysqli_real_escape_string($koneksi, $searchStatus);
+    $where[] = "status = '$searchStatus'";
 }
 
 $where_sql = count($where) > 0 ? "WHERE " . implode(" AND ", $where) : "";
@@ -66,19 +73,27 @@ $result = mysqli_query($koneksi, $query);
   </center>
 
   <div>
-    <form method="GET" class="search-form">
-      <input type="text" name="searchNama" placeholder="Cari Nama Depan" value="<?php echo htmlspecialchars($searchNama); ?>">
-      <input type="number" name="searchTahun" placeholder="Tahun Lulus" value="<?php echo htmlspecialchars($searchTahun); ?>">
+    <form method="GET" class="search-form" style="display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: nowrap; margin-bottom: 10px;">
+    <select name="limit" onchange="this.form.submit()" style="padding: 6px; font-size: 14px; width: 100px;">
+    <?php
+    for ($i = 15; $i <= 105; $i += 15) {
+        $selected = ($limit == $i) ? 'selected' : '';
+        echo "<option value=\"$i\" $selected>$i</option>";
+    }
+    ?>
+    </select> 
       
-      <select name="limit" onchange="this.form.submit()">
-        <option value="15" <?php if($limit == 15) echo 'selected'; ?>>15</option>
-        <option value="30" <?php if($limit == 30) echo 'selected'; ?>>30</option>
-        <option value="45" <?php if($limit == 45) echo 'selected'; ?>>45</option>
-        <option value="60" <?php if($limit == 60) echo 'selected'; ?>>60</option>
-      </select>
+  <select name="searchStatus" onchange="this.form.submit()" style="padding: 6px; font-size: 14px; width: 150px;">
+    <option value="" <?php echo ($searchStatus === '') ? 'selected' : ''; ?>>Semua Status</option>
+    <option value="kuliah" <?php echo ($searchStatus === 'kuliah') ? 'selected' : ''; ?>>Kuliah</option>
+    <option value="Bekerja" <?php echo ($searchStatus === 'Bekerja') ? 'selected' : ''; ?>>Bekerja</option>
+  </select>
 
-      <button type="submit">Cari</button>
-      <a href="crudAlumni.php" class="button" style="background-color:#ccc; color:#333; margin-left:10px;">Reset</a>
+    <input type="text" name="searchNama" placeholder="Cari Nama Depan" value="<?php echo htmlspecialchars($searchNama); ?>">
+    <input type="number" name="searchTahun" placeholder="Tahun Lulus" value="<?php echo htmlspecialchars($searchTahun); ?>">
+    
+    <button type="submit" style="padding: 6px 12px; font-size: 14px;">Cari</button>
+    <button type="button" class="button" onclick="window.location.href='dataAlumni.php'">Reset</button>
     </form>
   </div>
   
@@ -130,9 +145,9 @@ $result = mysqli_query($koneksi, $query);
 
   <div style="text-align:center; margin-bottom: 20px;">
     <?php if (!$showAll): ?>
-      <a href="?show=all&limit=<?php echo $limit; ?>&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Semua</a>
+      <a href="?show=all&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>&searchStatus=<?php echo urlencode($searchStatus); ?>&limit=<?php echo $limit; ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Semua</a>
     <?php else: ?>
-      <a href="crudAlumni.php?limit=<?php echo $limit; ?>&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Per Halaman</a>
+      <a href="dataAlumni.php?searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>&searchStatus=<?php echo urlencode($searchStatus); ?>&limit=<?php echo $limit; ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Per Halaman</a>
     <?php endif; ?>
   </div>
 
@@ -142,7 +157,7 @@ $result = mysqli_query($koneksi, $query);
       <?php if ($i == $page): ?>
         <strong style="margin: 0 5px;"><?php echo $i; ?></strong>
       <?php else: ?>
-        <a href="?page=<?php echo $i; ?>&limit=<?php echo $limit; ?>&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>"><?php echo $i; ?></a>
+      <a href="?page=<?php echo $i; ?>&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>&searchStatus=<?php echo urlencode($searchStatus); ?>&limit=<?php echo $limit; ?>"><?php echo $i; ?></a>
       <?php endif; ?>
     <?php endfor; ?>
   </div>
