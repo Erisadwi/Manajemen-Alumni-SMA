@@ -21,51 +21,27 @@
 </div>
 
 <div class="testimonials-section">
-    <h2 class="testimonial-title">TESTIMONIALS</h2>
-    <p class="testimonial-subtitle">Pengalaman para alumni SMA 99 Surabaya</p>
+    <h2 class="testimonial-title" style="text-align: center;">TESTIMONIALS</h2>
+    <p class="testimonial-subtitle" style="text-align: center;">Kisah nyata para alumni SMA 99 Surabaya yang membuktikan bahwa pendidikan, nilai, dan semangat dari sekolah ini terus hidup dalam langkah mereka.
+                                                                Melalui testimoni ini, kita melihat bagaimana kenangan sekolah berubah menjadi fondasi kesuksesan di dunia nyata.</p>
 
     <div class="testimonial-carousel">
         <div class="testimonial-cards">
-            <div class="testimonial-card active">
-                <p>"Menjadi siswa di SMA 99 Surabaya adalah batu loncatan utama saya menjadi diplomat. Disiplin dan nilai moral sangat kuat."</p>
-                <span>— Clara, Alumni 2015</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Dulu saya pemalu. Sekarang saya jadi pembicara publik. Terima kasih bimbingan para guru!"</p>
-                <span>— Budi, Alumni 2016</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Ekstrakurikuler robotik SMA 99 mengantar saya ke MIT!"</p>
-                <span>— Kevin, Alumni 2018</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Nilai kepemimpinan dan integritas membuat saya tahan banting di dunia kerja."</p>
-                <span>— Sari, Alumni 2022</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Saya belajar menjadi pendidik sejati dari guru-guru SMA 99."</p>
-                <span>— Dinda, Alumni 2019</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"SMA 99 tempat saya belajar konsistensi dan kerja keras. Kini saya CEO di startup teknologi."</p>
-                <span>— Rizky, Alumni 2021</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Pembinaan karakter di sekolah ini sangat berkesan. Membangun karakter saya sejak dini."</p>
-                <span>— Maria, Alumni 2024</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"SMA 99 bukan hanya sekolah, tapi rumah kedua bagi saya."</p>
-                <span>— Andre, Alumni 2017</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Saya bangga menjadi alumni SMA 99. Jejaringnya kuat di seluruh Indonesia."</p>
-                <span>— Lina, Alumni 2023</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Guru-gurunya luar biasa, dan saya tidak akan pernah melupakan masa SMA ini."</p>
-                <span>— Daniel, Alumni 2020</span>
-            </div>
+        <?php
+        include 'koneksi.php'; 
+        $query = "SELECT * FROM testimonialumni WHERE tampilkan = 1 ORDER BY idtestimoniAlumni DESC";
+        $result = mysqli_query($koneksi, $query);
+
+        $index = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $activeClass = $index === 0 ? 'active' : '';
+                echo '<div class="testimonial-card ' . $activeClass . '">';
+                echo '<p>"' . htmlspecialchars($row['testimoni']) . '"</p>';
+                echo '<span>— ' . htmlspecialchars($row['nama_depan']) . ', Alumni ' . htmlspecialchars($row['tahunLulus']) . '</span>';
+                echo '</div>';
+        $index++;
+        }
+        ?>
         </div>
     </div>
 </div>
@@ -79,7 +55,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'sukses') {
 ?>
 
 
-    <form class="contact-form" action="proses_testimoni.php" method="post">
+<form class="contact-form" action="proses_testimoni.php" method="post">
     <h3>Bagikan Testimoni Anda</h3>
     <input type="text" name="nama_depan" placeholder="Nama Depan" required>
     <select name="tahunLulus" required>

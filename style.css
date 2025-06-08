@@ -52,7 +52,7 @@ body {
 
 h1 {
   text-transform: uppercase;
-  color: #8B4513;
+  color: #1a2121;
 }
 
 table {
@@ -156,8 +156,8 @@ form.search-form input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 180px;
-  height: 36px;            /* Pastikan tinggi input sama dengan tombol */
-  box-sizing: border-box;  /* Agar padding tidak membuat input melebar */
+  height: 36px;            
+  box-sizing: border-box;  
 }
 
 form.search-form button,
@@ -170,11 +170,11 @@ form.search-form .button {
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
-  height: 36px;             /* Pastikan tinggi tombol sama dengan input */
+  height: 36px;             
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 80px;          /* Lebar minimal tombol agar konsisten */
+  min-width: 80px;          
   box-sizing: border-box;
 }
 
@@ -417,7 +417,6 @@ form.search-form .button {
   margin: 0 0 10px 0;
 }
 
-/* Responsive (tambahan) */
 @media screen and (max-width: 500px) {
   .kontak-page .contact-container {
     flex-direction: column;

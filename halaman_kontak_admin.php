@@ -11,73 +11,63 @@
     <div class="navbar-container">
         <div class="logo">Dashboard Admin</div>
         <ul class="nav-links">
-            <li><a href="index_alumni.php">Home</a></li>
+            <li><a href="index_admin.php">Home</a></li>
             <li><a href="crudAlumni.php">Data Alumni</a></li>
-            <li><a href="halaman_statistik_alumni.php">Statistik</a></li>
-            <li><a href="halaman_kontak_alumni.php">Kontak</a></li>
+            <li><a href="halaman_statistik_admin.php">Statistik</a></li>
+            <li><a href="halaman_kontak_admin.php">Kontak</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>
 </div>
 
 <div class="testimonials-section">
-    <h2 class="testimonial-title">TESTIMONIALS</h2>
-    <p class="testimonial-subtitle">Pengalaman para alumni SMA 99 Surabaya</p>
+    <h2 class="testimonial-title" style="text-align: center;">TESTIMONIALS</h2>
+    <p class="testimonial-subtitle" style="text-align: center;">Kisah nyata para alumni SMA 99 Surabaya yang membuktikan bahwa pendidikan, nilai, dan semangat dari sekolah ini terus hidup dalam langkah mereka.
+                                                                Melalui testimoni ini, kita melihat bagaimana kenangan sekolah berubah menjadi fondasi kesuksesan di dunia nyata.</p>
 
     <div class="testimonial-carousel">
         <div class="testimonial-cards">
-            <div class="testimonial-card active">
-                <p>"Menjadi siswa di SMA 99 Surabaya adalah batu loncatan utama saya menjadi diplomat. Disiplin dan nilai moral sangat kuat."</p>
-                <span>— Clara, Alumni 2015</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Dulu saya pemalu. Sekarang saya jadi pembicara publik. Terima kasih bimbingan para guru!"</p>
-                <span>— Budi, Alumni 2016</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Ekstrakurikuler robotik SMA 99 mengantar saya ke MIT!"</p>
-                <span>— Kevin, Alumni 2018</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Nilai kepemimpinan dan integritas membuat saya tahan banting di dunia kerja."</p>
-                <span>— Sari, Alumni 2022</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Saya belajar menjadi pendidik sejati dari guru-guru SMA 99."</p>
-                <span>— Dinda, Alumni 2019</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"SMA 99 tempat saya belajar konsistensi dan kerja keras. Kini saya CEO di startup teknologi."</p>
-                <span>— Rizky, Alumni 2021</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Pembinaan karakter di sekolah ini sangat berkesan. Membangun karakter saya sejak dini."</p>
-                <span>— Maria, Alumni 2024</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"SMA 99 bukan hanya sekolah, tapi rumah kedua bagi saya."</p>
-                <span>— Andre, Alumni 2017</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Saya bangga menjadi alumni SMA 99. Jejaringnya kuat di seluruh Indonesia."</p>
-                <span>— Lina, Alumni 2023</span>
-            </div>
-            <div class="testimonial-card">
-                <p>"Guru-gurunya luar biasa, dan saya tidak akan pernah melupakan masa SMA ini."</p>
-                <span>— Daniel, Alumni 2020</span>
-            </div>
+        <?php
+        include 'koneksi.php'; 
+        $query = "SELECT * FROM testimonialumni WHERE tampilkan = 1 ORDER BY idtestimoniAlumni DESC";
+        $result = mysqli_query($koneksi, $query);
+
+        $index = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $activeClass = $index === 0 ? 'active' : '';
+                echo '<div class="testimonial-card ' . $activeClass . '">';
+                echo '<p>"' . htmlspecialchars($row['testimoni']) . '"</p>';
+                echo '<span>— ' . htmlspecialchars($row['nama_depan']) . ', Alumni ' . htmlspecialchars($row['tahunLulus']) . '</span>';
+                echo '</div>';
+        $index++;
+        }
+        ?>
         </div>
     </div>
 </div>
 
 <div class="contact-container">
-    <form class="contact-form" action="proses_testimoni.php" method="post">
-        <h3>Bagikan Testimoni Anda</h3>
-        <input type="text" name="nama" placeholder="Nama Anda" required>
-        <input type="text" name="angkatan" placeholder="Angkatan / Tahun Lulus" required>
-        <textarea name="testimoni" placeholder="Tulis testimoni Anda di sini..." required></textarea>
-        <button type="submit">Kirim Testimoni</button>
-    </form>
+
+<?php
+if (isset($_GET['status']) && $_GET['status'] === 'sukses') {
+    echo '<script>alert("Testimoni berhasil terkirim!");</script>';
+}
+?>
+
+<form class="contact-form" action="proses_testimoni.php" method="post">
+    <h3>Bagikan Testimoni Anda</h3>
+    <input type="text" name="nama_depan" placeholder="Nama Depan" required>
+    <select name="tahunLulus" required>
+        <option value="" disabled selected>Pilih Tahun Lulus</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+    </select>
+    <textarea name="testimoni" placeholder="Tulis testimoni Anda di sini..." required></textarea>
+    <button type="submit">Kirim Testimoni</button>
+</form>
 
     <div class="contact-info">
         <h4>Informasi Kontak</h4>
