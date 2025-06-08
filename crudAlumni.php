@@ -4,9 +4,10 @@ include('koneksi.php');
 $searchNama = isset($_GET['searchNama']) ? $_GET['searchNama'] : '';
 $searchTahun = isset($_GET['searchTahun']) ? $_GET['searchTahun'] : '';
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$showAll = isset($_GET['show']) && $_GET['show'] == 'all';
+$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 15;
+if ($limit < 1) $limit = 15;
 
-$limit = 15; 
+$showAll = isset($_GET['show']) && $_GET['show'] == 'all';
 $offset = ($page - 1) * $limit;
 
 $where = [];
@@ -19,10 +20,7 @@ if ($searchTahun !== '') {
     $where[] = "tahunLulus = '$searchTahun'";
 }
 
-$where_sql = '';
-if (count($where) > 0) {
-    $where_sql = "WHERE " . implode(" AND ", $where);
-}
+$where_sql = count($where) > 0 ? "WHERE " . implode(" AND ", $where) : "";
 
 $count_query = "SELECT COUNT(*) AS total FROM alumni $where_sql";
 $count_result = mysqli_query($koneksi, $count_query);
@@ -40,7 +38,7 @@ $result = mysqli_query($koneksi, $query);
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Manajemen Data Alumni SMA</title>
   <link rel="stylesheet" href="navbar.css" />
@@ -66,14 +64,23 @@ $result = mysqli_query($koneksi, $query);
   <center>
     <a href="tambah_alumni.php" class="button add-button">+ &nbsp; Tambah Alumni</a>
   </center>
-<div>
-  <form method="GET" class="search-form">
-    <input type="text" name="searchNama" placeholder="Cari Nama Depan" value="<?php echo htmlspecialchars($searchNama); ?>">
-    <input type="number" name="searchTahun" placeholder="Tahun Lulus" value="<?php echo htmlspecialchars($searchTahun); ?>">
-    <button type="submit">Cari</button>
-    <a href="crudAlumni.php" class="button" style="background-color:#ccc; color:#333; margin-left:10px;">Reset</a>
-  </form>
-</div>
+
+  <div>
+    <form method="GET" class="search-form">
+      <input type="text" name="searchNama" placeholder="Cari Nama Depan" value="<?php echo htmlspecialchars($searchNama); ?>">
+      <input type="number" name="searchTahun" placeholder="Tahun Lulus" value="<?php echo htmlspecialchars($searchTahun); ?>">
+      
+      <select name="limit" onchange="this.form.submit()">
+        <option value="15" <?php if($limit == 15) echo 'selected'; ?>>15</option>
+        <option value="30" <?php if($limit == 30) echo 'selected'; ?>>30</option>
+        <option value="45" <?php if($limit == 45) echo 'selected'; ?>>45</option>
+        <option value="60" <?php if($limit == 60) echo 'selected'; ?>>60</option>
+      </select>
+
+      <button type="submit">Cari</button>
+      <a href="crudAlumni.php" class="button" style="background-color:#ccc; color:#333; margin-left:10px;">Reset</a>
+    </form>
+  </div>
   
   <table>
     <thead>
@@ -93,7 +100,7 @@ $result = mysqli_query($koneksi, $query);
     <tbody>
       <?php
       if(mysqli_num_rows($result) == 0){
-        echo "<tr><td colspan='9' style='text-align:center;'>Data tidak ditemukan</td></tr>";
+        echo "<tr><td colspan='10' style='text-align:center;'>Data tidak ditemukan</td></tr>";
       } else {
         while($row = mysqli_fetch_assoc($result)){
       ?>
@@ -121,27 +128,25 @@ $result = mysqli_query($koneksi, $query);
     </tbody>
   </table>
 
-<div style="text-align:center; margin-bottom: 20px;">
-  <?php if (!$showAll): ?>
-    <a href="?show=all&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Semua</a>
-  <?php else: ?>
-    <a href="dataAlumni.php?searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Per Halaman</a>
-  <?php endif; ?>
-</div>
-
-<?php if (!$showAll && $total_pages > 1): ?>
-<div class="pagination" style="text-align:center; margin-top: 20px;">
-  <?php for($i = 1; $i <= $total_pages; $i++): ?>
-    <?php if ($i == $page): ?>
-      <strong style="margin: 0 5px;"><?php echo $i; ?></strong>
+  <div style="text-align:center; margin-bottom: 20px;">
+    <?php if (!$showAll): ?>
+      <a href="?show=all&limit=<?php echo $limit; ?>&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Semua</a>
     <?php else: ?>
-      <a href="?page=<?php echo $i; ?>&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>"><?php echo $i; ?></a>
+      <a href="crudAlumni.php?limit=<?php echo $limit; ?>&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>" class="button" style="background-color:#007bff; color:white; padding: 8px 16px; border-radius: 4px; text-decoration:none;">Tampilkan Per Halaman</a>
     <?php endif; ?>
-  <?php endfor; ?>
-</div>
-<?php endif; ?>
+  </div>
+
+  <?php if (!$showAll && $total_pages > 1): ?>
+  <div class="pagination" style="text-align:center; margin-top: 20px;">
+    <?php for($i = 1; $i <= $total_pages; $i++): ?>
+      <?php if ($i == $page): ?>
+        <strong style="margin: 0 5px;"><?php echo $i; ?></strong>
+      <?php else: ?>
+        <a href="?page=<?php echo $i; ?>&limit=<?php echo $limit; ?>&searchNama=<?php echo urlencode($searchNama); ?>&searchTahun=<?php echo urlencode($searchTahun); ?>"><?php echo $i; ?></a>
+      <?php endif; ?>
+    <?php endfor; ?>
+  </div>
+  <?php endif; ?>
 
 </body>
 </html>
-
-
