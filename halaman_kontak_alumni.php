@@ -4,6 +4,160 @@
     <meta charset="UTF-8">
     <title>Halaman Kontak</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Carousel Testimonials */
+        .testimonial-carousel {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            width: 750px;
+            overflow: hidden;
+            margin-top: 30px;
+            align-items: center;
+        }
+
+        .testimonial-cards {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+            align-items: center;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            padding: 20px 30px;
+            margin: 0 auto;
+            max-width: 500px;
+            min-height: 110px;
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            text-align: center;
+            font-style: italic;
+            color: #333;
+            transition: opacity 0.5s ease;
+        }
+
+        .testimonial-card.active {
+            position: relative;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        /* Kontak Form dan Info */
+        .kontak-page .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 100px auto 60px auto;
+            padding: 20px;
+            background-color: #fffaf0;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .kontak-page .contact-form {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background-color: #fff8dc;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .kontak-page .contact-form input,
+        .kontak-page .contact-form textarea,
+        .kontak-page .contact-form select {
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 8px;
+            border: 1px solid #c0a16b;
+            background-color: #fffef6;
+            font-family: "Trebuchet MS", sans-serif;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .kontak-page .contact-form input:focus,
+        .kontak-page .contact-form textarea:focus,
+        .kontak-page .contact-form select:focus {
+            border-color: #8B4513;
+            box-shadow: 0 0 5px rgba(139, 69, 19, 0.4);
+            outline: none;
+        }
+
+        .kontak-page .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .kontak-page .contact-form button {
+            background-color: #8B4513;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            align-self: flex-end;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .kontak-page .contact-form button:hover {
+            background-color: #A0522D;
+            transform: translateY(-2px);
+        }
+
+        .kontak-page .contact-info {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+            background-color: #fef5e6;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .kontak-page .contact-info h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #8B4513;
+        }
+
+        .kontak-page .contact-info p {
+            margin: 0 0 10px 0;
+        }
+
+        @media screen and (max-width: 500px) {
+            .kontak-page .contact-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .kontak-page .contact-form,
+            .kontak-page .contact-info {
+                max-width: 100%;
+            }
+
+            .kontak-page .contact-form button {
+                width: 100%;
+                align-self: stretch;
+            }
+        }
+    </style>
 </head>
 <body class="kontak-page">
 
