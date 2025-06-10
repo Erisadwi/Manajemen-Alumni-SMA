@@ -29,7 +29,7 @@ $koneksi->close();
     <div class="navbar-container">
         <div class="logo">Dashboard Admin</div>
         <ul class="nav-links">
-            <li><a href="index_admin.php">Home</a></li>
+            <li><a href="beranda_admin.php">Home</a></li>
             <li><a href="crudAlumni.php">Data Alumni</a></li>
             <li><a href="halaman_statistik_admin.php">Statistik</a></li>
             <li><a href="halaman_kontak_admin.php">Kontak</a></li>

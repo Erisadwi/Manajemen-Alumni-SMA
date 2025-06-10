@@ -13,7 +13,7 @@
       <div class="navbar-container">
         <div class="logo">Dashboard Alumni</div>
         <ul class="nav-links">
-          <li><a href="index_alumni.php">Home</a></li>
+          <li><a href="beranda_alumni.php">Home</a></li>
           <li><a href="dataAlumni.php">Data Alumni</a></li>
           <li><a href="halaman_statistik_alumni.php">Statistik</a></li>
           <li><a href="halaman_kontak_alumni.php">Kontak</a></li>
