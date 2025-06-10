@@ -9,26 +9,34 @@
             position: relative;
             display: flex;
             justify-content: center;
-            width: 750px;
+            width: 100%;
             overflow: hidden;
             margin-top: 30px;
             align-items: center;
         }
 
+        .testimonial-cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
         .testimonial-card-group {
             display: flex;
             gap: 20px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            justify-content: center;
             opacity: 0;
             transition: opacity 0.5s ease;
+            position: absolute;
+            width: 100%;
         }
 
         .testimonial-card-group.active {
             opacity: 1;
-            position: relative;
             z-index: 1;
+            position: relative;
         }
 
         .testimonial-card {
@@ -272,7 +280,7 @@
     }
 
     updateSlide(currentIndex);
-    setInterval(autoSlide, 7000); // Geser setiap 7 detik
+    setInterval(autoSlide, 4000); 
 </script>
 
 </body>

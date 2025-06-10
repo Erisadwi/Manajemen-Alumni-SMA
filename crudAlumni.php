@@ -54,7 +54,7 @@ $result = mysqli_query($koneksi, $query);
         <div class="logo">Dashboard Admin</div>
         <ul class="nav-links">
           <li><a href="index_admin.php">Home</a></li>
-          <li><a href="dataAlumni.php">Data Alumni</a></li>
+          <li><a href="crudAlumni.php">Data Alumni</a></li>
           <li><a href="halaman_statistik_admin.php">Statistik</a></li>
           <li><a href="halaman_kontak_admin.php">Kontak</a></li>
           <li><a href="logout.php">Logout</a></li>
@@ -87,7 +87,7 @@ $result = mysqli_query($koneksi, $query);
     <input type="number" name="searchTahun" placeholder="Tahun Lulus" value="<?php echo htmlspecialchars($searchTahun); ?>">
     
     <button type="submit" style="padding: 6px 12px; font-size: 14px;">Cari</button>
-    <button type="button" class="button" onclick="window.location.href='dataAlumni.php'">Reset</button>
+    <button type="button" class="button" onclick="window.location.href='crudAlumni.php'">Reset</button>
     </form>
   </div>
   

@@ -9,26 +9,34 @@
             position: relative;
             display: flex;
             justify-content: center;
-            width: 750px;
+            width: 100%;
             overflow: hidden;
             margin-top: 30px;
             align-items: center;
         }
 
+        .testimonial-cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
         .testimonial-card-group {
             display: flex;
             gap: 20px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            justify-content: center;
             opacity: 0;
             transition: opacity 0.5s ease;
+            position: absolute;
+            width: 100%;
         }
 
         .testimonial-card-group.active {
             opacity: 1;
-            position: relative;
             z-index: 1;
+            position: relative;
         }
 
         .testimonial-card {
@@ -166,12 +174,12 @@
 
 <div class="navbar">
     <div class="navbar-container">
-        <div class="logo">Dashboard Admin</div>
+        <div class="logo">Dashboard Alumni</div>
         <ul class="nav-links">
-            <li><a href="index_admin.php">Home</a></li>
+            <li><a href="index_alumni.php">Home</a></li>
             <li><a href="dataAlumni.php">Data Alumni</a></li>
-            <li><a href="halaman_statistik_admin.php">Statistik</a></li>
-            <li><a href="halaman_kontak_admin.php">Kontak</a></li>
+            <li><a href="halaman_statistik_alumni.php">Statistik</a></li>
+            <li><a href="halaman_kontak_alumni.php">Kontak</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>
@@ -272,7 +280,7 @@
     }
 
     updateSlide(currentIndex);
-    setInterval(autoSlide, 7000); // Geser setiap 7 detik
+    setInterval(autoSlide, 4000); 
 </script>
 
 </body>
