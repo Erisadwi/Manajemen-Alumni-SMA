@@ -110,7 +110,6 @@
       <div class="form-group">
         <label>Role</label>
         <select name="role" required>
-          <option value="admin">Admin</option>
           <option value="alumni">Alumni</option>
         </select>
       </div>
