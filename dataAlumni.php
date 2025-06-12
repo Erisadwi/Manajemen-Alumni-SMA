@@ -6,8 +6,10 @@ $searchTahun  = isset($_GET['searchTahun']) ? $_GET['searchTahun'] : '';
 $searchStatus = isset($_GET['searchStatus']) ? $_GET['searchStatus'] : '';
 $page         = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-$limit  = isset($_GET['limit']) ? (int)$_GET['limit'] : 15;
-$offset = ($page - 1) * $limit;
+$limit  = isset($_GET['limit']) ? (int)$_GET['limit'] : 15; 
+$page   = isset($_GET['page']) ? (int)$_GET['page'] : 1;    
+$offset = ($page - 1) * $limit;                            
+
 
 $where = [];
 if ($searchNama !== '') {
