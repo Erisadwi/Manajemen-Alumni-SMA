@@ -4,9 +4,9 @@ include('koneksi.php');
 $searchNama   = isset($_GET['searchNama']) ? $_GET['searchNama'] : '';
 $searchTahun  = isset($_GET['searchTahun']) ? $_GET['searchTahun'] : '';
 $searchStatus = isset($_GET['searchStatus']) ? $_GET['searchStatus'] : '';
-$page         = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
 $limit  = isset($_GET['limit']) ? (int)$_GET['limit'] : 15;
+$page         = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
 $where = [];
