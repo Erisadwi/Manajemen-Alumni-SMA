@@ -80,7 +80,7 @@
       </div>
       <div>
         <label>Foto</label>
-        <input type="file" name="foto" required />
+        <input type="file" name="foto"/>
       </div>
       <div>
         <button type="submit">Simpan Data Alumni</button>
