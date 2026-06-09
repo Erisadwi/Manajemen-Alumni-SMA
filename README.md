@@ -48,18 +48,3 @@ Sistem ini dibuat untuk membantu pihak sekolah dalam:
 * Mempermudah pencarian informasi alumni.
 * Mengurangi proses pendataan secara manual.
 * Meningkatkan efisiensi pengelolaan data alumni.
-
-## 👨‍💻 Developer
-
-Project ini dikembangkan sebagai tugas pengembangan aplikasi berbasis web.
-
-### Tim Pengembang
-
-* Erisa Dwi Xena Anindhyta
-* Divia
-* Dian
-* Dewi
-
-## 📄 Lisensi
-
-Project ini dibuat untuk tujuan pembelajaran dan pengembangan sistem informasi berbasis web.
